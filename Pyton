@@ -1,0 +1,26 @@
+import requests
+import json
+
+endpoint = "<YOUR_ENDPOINT>"
+api_key = "<YOUR_API_KEY>"
+index_name = "product-index"
+
+# Dados a serem indexados
+data = [
+    {"@search.action": "upload", "id": "1", "name": "Smartphone Ultra", "description": "Smartphone com tela de 6.5\" e câmera de 108MP.", "category": "Eletrônicos", "price": 1499.99, "release_date": "2023-12-01T00:00:00Z", "image_url": "https://exemplo.com/imagem1.jpg"},
+    {"@search.action": "upload", "id": "2", "name": "Notebook Pro", "description": "Notebook com processador Intel i7 e 16GB de RAM.", "category": "Informática", "price": 4999.99, "release_date": "2023-11-15T00:00:00Z", "image_url": "https://exemplo.com/imagem2.jpg"}
+]
+
+headers = {
+    'Content-Type': 'application/json',
+    'api-key': api_key
+}
+
+response = requests.post(f"{endpoint}/indexes/{index_name}/docs/index?api-version=2021-04-30-Preview", 
+                         headers=headers, 
+                         data=json.dumps({"value": data}))
+
+if response.status_code == 200:
+    print("Dados indexados com sucesso!")
+else:
+    print(f"Erro ao indexar dados: {response.status_code}, {response.text}")
