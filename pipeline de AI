@@ -1,0 +1,15 @@
+{
+    "description": "Enriquecimento de Dados com AI",
+    "skills": [
+        {
+            "@odata.type": "#Microsoft.Skills.Text.MergeTextSkill",
+            "inputs": [{"name": "text", "source": "/document/description"}],
+            "outputs": [{"name": "mergedText", "targetName": "extracted_text"}]
+        },
+        {
+            "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
+            "inputs": [{"name": "image", "source": "/document/image_url"}],
+            "outputs": [{"name": "text", "targetName": "extracted_text"}]
+        }
+    ]
+}
