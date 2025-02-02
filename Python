@@ -1,0 +1,12 @@
+search_query = "Smartphone"
+filter_query = "price lt 2000 and category eq 'Eletrônicos'"
+
+response = requests.get(f"{endpoint}/indexes/{index_name}/docs?search={search_query}&$filter={filter_query}&api-version=2021-04-30-Preview", 
+                        headers=headers)
+
+if response.status_code == 200:
+    results = response.json()
+    for doc in results['value']:
+        print(f"Nome: {doc['name']}, Preço: {doc['price']}")
+else:
+    print(f"Erro ao realizar consulta: {response.status_code}, {response.text}")
