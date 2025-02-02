@@ -1,0 +1,13 @@
+{
+    "name": "product-index",
+    "fields": [
+        {"name": "id", "type": "Edm.String", "key": true},
+        {"name": "name", "type": "Edm.String", "searchable": true},
+        {"name": "description", "type": "Edm.String", "searchable": true},
+        {"name": "category", "type": "Edm.String", "filterable": true, "sortable": true},
+        {"name": "price", "type": "Edm.Double", "sortable": true, "facetable": true},
+        {"name": "release_date", "type": "Edm.DateTimeOffset", "sortable": true},
+        {"name": "image_url", "type": "Edm.String", "retrievable": true},
+        {"name": "extracted_text", "type": "Edm.String", "searchable": true}
+    ]
+}
